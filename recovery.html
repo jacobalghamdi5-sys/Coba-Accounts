@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coba Accounts - Recovery Portal</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="coba-auth-card">
+        <div class="coba-brand-node">
+            <div class="brand-glyph">R</div>
+            <div class="brand-text-block">
+                <span class="text-primary">CobaRe</span>
+                <span class="text-secondary">Identity Fix</span>
+            </div>
+        </div>
+
+        <h1>Account Recovery</h1>
+        <p>Enter your unique profile ID alias to look up your local encryption vault backup keys.</p>
+
+        <div class="auth-fields-stack">
+            <div class="custom-field-box">
+                <input type="text" id="recoveryUser" class="field-element" placeholder="Your Coba Username" autocomplete="off">
+            </div>
+        </div>
+
+        <div class="controls-toolbar-block" style="margin-top: 30px;">
+            <a href="index.html" class="link-action-btn" style="text-decoration:none; font-size:14px; padding-top:10px;">Back to Sign in</a>
+            <button class="action-submit-pill" onclick="runRecoveryLookup()">Find Keys</button>
+        </div>
+
+        <div id="recoveryStatus" class="feedback-alert-box"></div>
+    </div>
+
+    <script>
+        function runRecoveryLookup() {
+            let user = document.getElementById("recoveryUser").value.trim();
+            let box = document.getElementById("recoveryStatus");
+            box.style.display = "block";
+            
+            let checkVault = localStorage.getItem("coba_id_" + user);
+            if (checkVault) {
+                box.className = "feedback-alert-box success";
+                box.innerText = "🔑 Vault located! Your active verification key is: " + checkVault;
+            } else {
+                box.className = "feedback-alert-box error";
+                box.innerText = "❌ No account matrix string found for that username alias.";
+            }
+        }
+    </script>
+</body>
+</html>
