@@ -1,0 +1,22 @@
+{
+    "app_name": "Coba Accounts Global Portal",
+    "version": "2.5.0-Enterprise",
+    "system_status": "OPERATIONAL",
+    "security_enclave": {
+        "encryption_algorithm": "AES-GCM-256-Local",
+        "enforce_local_storage_vault": true,
+        "max_failed_login_attempts": 3,
+        "lockout_duration_seconds": 900,
+        "two_step_verification_active": true
+    },
+    "localization_matrix": {
+        "default_language": "en",
+        "supported_locales": ["en", "es", "fr", "id", "de", "ja"],
+        "auto_detect_browser_lang": true
+    },
+    "connected_ecosystem_modules": {
+        "coba_mail_client_sync": true,
+        "coba_text_messaging_engine": true,
+        "github_pipeline_scoping_rules": "sandbox_isolated"
+    }
+}
