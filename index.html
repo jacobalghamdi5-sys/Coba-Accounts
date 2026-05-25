@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coba Accounts - Cloud Security Infrastructure</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- 🔑 GLOBAL SECURITY ACCESS CONTAINER -->
+    <div id="accountPortal" class="portal-overlay" style="display: flex;">
+        <div class="portal-card">
+            
+            <!-- Branded Logo Header Node -->
+            <div class="coba-logo-node">
+                <span class="c-blue">C</span>
+                <span class="c-red">o</span>
+                <span class="c-yellow">b</span>
+                <span class="c-blue">a</span>
+                <span class="logo-sub">Accounts</span>
+            </div>
+
+            <h1 id="portalTitle">Create your Coba Account</h1>
+            <p id="portalSub">One master digital identity to access all your secure sandbox modules</p>
+            <!-- Interactive Form Input Grid Fields -->
+            <div class="form-grid-stack">
+                <div class="input-field-wrapper">
+                    <input type="text" id="portalUser" class="material-field" placeholder=" " autocomplete="off">
+                    <label for="portalUser">Create a unique Coba Username</label>
+                </div>
+                
+                <div class="input-field-wrapper">
+                    <input type="password" id="portalPass" class="material-field" placeholder=" ">
+                    <label for="portalPass">Enter a robust Security Key</label>
+                    <span class="password-toggle-eye" onclick="togglePasswordVisibility()">👁️</span>
+                </div>
+
+                <div class="input-field-wrapper confirmation-field" id="confirmFieldRow">
+                    <input type="password" id="portalPassConfirm" class="material-field" placeholder=" ">
+                    <label for="portalPassConfirm">Confirm Password</label>
+                </div>
+            </div>
+
+            <!-- Custom User Badge Profile Avatar Choices Selector -->
+            <div class="avatar-selector-section" id="avatarSection">
+                <p class="avatar-title-label">Choose your Core Account Avatar Icon Node:</p>
+                <div class="avatar-grid-chips">
+                    <div class="avatar-chip active" onclick="selectProfileAvatar('🤖')">🤖</div>
+                    <div class="avatar-chip" onclick="selectProfileAvatar('🧠')">🧠</div>
+                    <div class="avatar-chip" onclick="selectProfileAvatar('🚀')">🚀</div>
+                    <div class="avatar-chip" onclick="selectProfileAvatar('👑')">👑</div>
+                </div>
+            </div>
+            <!-- Mandatory Compliance Documentation Rows -->
+            <div id="legalCheckboxRow" class="terms-compliance-row">
+                <input type="checkbox" id="legalAgreeCheck" onchange="validateCheckboxState()">
+                <label for="legalAgreeCheck">I verify and agree to the <span class="blue-action-link" onclick="openLegalModal('terms')">Terms of Use</span> and <span class="blue-action-link" onclick="openLegalModal('policy')">Privacy Framework Policy</span></label>
+            </div>
+            
+            <!-- Master Control Action Inputs Bar -->
+            <div class="action-buttons-toolbar">
+                <button id="portalToggleBtn" class="flat-action-btn" onclick="togglePortalMode()">Sign in instead</button>
+                <button id="portalSubmitBtn" class="pill-action-btn" onclick="handleAccountAction()" disabled>Next</button>
+            </div>
+            
+            <div id="portalStatusBox" class="portal-status-alert"></div>
+        </div>
+    </div>
+
+    <!-- 📄 COMPLIANCE DOCUMENTS POP-UP WRAPPER SCREEN -->
+    <div id="legalModalWindow" class="legal-modal-backdrop" onclick="closeLegalModal()">
+        <div class="legal-modal-box" onclick="event.stopPropagation()">
+            <h3 id="legalModalTitle">Regulatory Document</h3>
+            <hr class="separator-line-bar">
+            <div id="legalModalBody" class="legal-scroller-body"></div>
+            <button class="pill-action-btn" onclick="closeLegalModal()" style="width: 100%; text-align: center; margin-top: 15px;">Close Document</button>
+        </div>
+    </div>
+    <!-- 🖥️ MAIN COBA USER DASHBOARD SCREEN (HIDDEN UNTIL LOGIN) -->
+    <div id="appContainer" style="display: none; width: 100vw; height: 100vh;">
+        <div class="sidebar">
+            <div class="sidebar-top">
+                <div class="logo">⚙️ Coba ID Dashboard</div>
+                
+                
+                <div class="profile-summary-card">
+                    <div id="userAvatarDisplay" class="large-avatar-badge">🤖</div>
+                    <div class="profile-info-block">
+                        <div id="userBadge" class="user-id-title">@Guest</div>
+                        <div id="userSecurityTier" class="security-tier-tag">Standard Access</div>
+                    </div>
+                </div>
+
+                <!-- Dashboard Navigation Folder System -->
+                <div class="folder-list">
+                    <div id="navSecurity" class="folder-item active" onclick="switchDashboardTab('security')">🔒 Security Settings</div>
+                    <div id="navProfile" class="folder-item" onclick="switchDashboardTab('profile')">👤 Personal Info</div>
+                    <div id="navConnected" class="folder-item" onclick="switchDashboardTab('connected')">🌐 Connected Modules</div>
+                </div>
+            </div>
+            
+            <div class="sidebar-bottom">
+                <hr class="separator-line-bar" style="margin-bottom: 12px;">
+                <button class="flat-action-btn logout-btn" onclick="logoutAccount()" style="text-align: center; width: 100%;">🔒 Log Out</button>
+            </div>
+        </div>
+        <!-- RIGHT PANEL: CONTENT MANAGEMENT WORKSPACE -->
+        <div class="main-chat">
+            <div class="chat-header">
+                <div class="active-contact-title" id="tabMainHeader">Security Settings Core</div>
+            </div>
+
+            <div class="chat-display" id="tabContentWindow">
+                <!-- 🔒 SECURITY TAB PANEL -->
+                <div id="panelSecurity" class="tab-panel-view" style="display: block;">
+                    <h3>Cryptographic Account Controls</h3>
+                    <p style="color:#8696a0; margin-bottom:20px;">Manage verification layers, local session tokens, and key properties.</p>
+                    
+                    <div class="setting-item-row">
+                        <div class="setting-text">
+                            <strong>Two-Step Local Validation</strong>
+                            <p>Require check verification states before logging in.</p>
+                        </div>
+                        <input type="checkbox" id="twoStepCheck" checked>
+                    </div>
+
+                    <div class="setting-item-row" style="margin-top: 15px;">
+                        <div class="setting-text">
+                            <strong>Local Storage Enclave Protection</strong>
+                            <p>Isolate login credentials records safely inside the device core.</p>
+                        </div>
+                        <span style="color:#00a884; font-weight:bold;">Active Status</span>
+                    </div>
+                </div>
+                <!-- 👤 PERSONAL INFO TAB PANEL -->
+                <div id="panelProfile" class="tab-panel-view" style="display: none;">
+                    <h3>Identity Metadata Management</h3>
+                    <p style="color:#8696a0; margin-bottom:20px;">Review account parameters, custom aliases, and generation frameworks.</p>
+                    
+                    <div class="setting-item-row">
+                        <div class="setting-text">
+                            <strong>Platform Account Type</strong>
+                            <p>Coba Master Account Profile Scope</p>
+                        </div>
+                        <span style="color:#4285F4; font-weight:bold;">Primary Dev Tier</span>
+                    </div>
+
+                    <div class="setting-item-row" style="margin-top: 15px;">
+                        <div class="setting-text">
+                            <strong>Global Legal Agreement Logs</strong>
+                            <p>Tracks your confirmed status on legal compliance documents.</p>
+                        </div>
+                        <span style="color:#00a884; font-weight:bold;">Verified Verified</span>
+                    </div>
+                </div>
+
+                <!-- 🌐 CONNECTED MODULES TAB PANEL -->
+                <div id="panelConnected" class="tab-panel-view" style="display: none;">
+                    <h3>Ecosystem Module Sync Matrices</h3>
+                    <p style="color:#8696a0; margin-bottom:20px;">Manage which localized sandboxes connect to your Coba Account core.</p>
+                    
+                    <div class="setting-item-row">
+                        <div class="setting-text">
+                            <strong>📬 Coba Mail App Client</strong>
+                            <p>Connected to push-button email database routing modules.</p>
+                        </div>
+                        <button class="pill-action-btn" style="background:#222e35; color:#ff8080; width:auto; border-radius:10px;" onclick="alert('Module disconnected safely.')">Disconnect</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 🔗 Connects your giant styling layout and engine files together -->
+    <script src="script.js"></script>
+</body>
+</html>
