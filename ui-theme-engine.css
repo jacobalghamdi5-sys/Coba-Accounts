@@ -1,0 +1,58 @@
+/* 🎇 COBA ECOSYSTEM DESIGN EXPANSIONS */
+
+/* Neon pulse glowing ring for custom buttons */
+.pulse-glow-effect {
+    box-shadow: 0 0 0 0 rgba(0, 168, 132, 0.7);
+    animation: elasticPulse 2s infinite cubic-bezier(0.66, 0, 0, 1);
+}
+
+@keyframes elasticPulse {
+    to {
+        box-shadow: 0 0 0 15px rgba(0, 168, 132, 0);
+    }
+}
+
+/* Real-time color theme engine parameters */
+.theme-canvas-blue {
+    background-color: #0b111e !important;
+    border-color: #1a2942 !important;
+}
+
+.theme-canvas-violet {
+    background-color: #120b1e !important;
+    border-color: #26173d !important;
+}
+
+/* Dynamic Live Password Strength Meter bar */
+.strength-meter-container {
+    width: 100%;
+    height: 6px;
+    background-color: #232931;
+    border-radius: 3px;
+    margin-top: 8px;
+    overflow: hidden;
+    display: none;
+}
+
+.strength-bar-fill {
+    height: 100%;
+    width: 0%;
+    background-color: #ff8080;
+    transition: width 0.3s ease, background-color 0.3s ease;
+}
+
+/* Custom interactive background configuration switches */
+.theme-toggle-cluster {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 15px;
+}
+
+.color-dot-switch {
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    cursor: pointer;
+    border: 2px solid #2d3540;
+}
