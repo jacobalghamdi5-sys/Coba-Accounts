@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coba Accounts - Core Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="dashboard-body">
+
+    <!-- MASTER WORKSPACE MATRIX PANEL -->
+    <div class="dashboard-wrapper">
+        <header class="dashboard-nav">
+            <div class="nav-brand">⚡ Coba Accounts</div>
+            <div class="user-session-badge">
+                <span id="activeUserBadge">@Guest</span>
+                <button class="logout-pill" onclick="triggerSessionTermination()">Sign Out</button>
+            </div>
+        </header>
+
+        <main class="dashboard-grid">
+            <!-- Left Command Panel Cards -->
+            <div class="grid-card accent-card">
+                <h3>Identity Node Active</h3>
+                <p>Your unique Coba profile identifier configuration string is fully verified and active across our localized secure sandbox modules.</p>
+                <div class="system-indicator">
+                    <span class="pulse-dot"></span> System State: Secure
+                </div>
+            </div>
+
+            <!-- Right Cryptographic Metric Log Cards -->
+            <div class="grid-card">
+                <h3>Local Encryption Logs</h3>
+                <div class="log-stack">
+                    <div class="log-row"><span>Storage Access:</span> <strong class="green-text">Granted</strong></div>
+                    <div class="log-row"><span>Token Protocol:</span> <strong>localStorage Core</strong></div>
+                    <div class="log-row"><span>Security Enclave:</span> <strong>Active</strong></div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        // Automatic session tracking script logic rules
+        document.addEventListener("DOMContentLoaded", () => {
+            let user = localStorage.getItem("cobaActiveUser") || "Guest";
+            document.getElementById("activeUserBadge").innerText = "@" + user;
+        });
+
+        function triggerSessionTermination() {
+            localStorage.removeItem("cobaActiveUser");
+            window.location.href = "index.html"; // Reroutes right back to the login shield page
+        }
+    </script>
+</body>
+</html>
